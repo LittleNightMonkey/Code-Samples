@@ -1,0 +1,479 @@
+-- By Taru Konttinen 2017
+
+-- Creating an obstacle
+local function createA()
+
+	-- Generating only the easiest obstacles
+	if levelID >=1 and levelID <=3 then
+		randomness = math.random(1, 4)	
+		if randomness == 1 then
+				collectionfactory.create("#A101factory")
+		elseif randomness == 2 then
+				collectionfactory.create("#A102factory")
+		elseif randomness == 3 then
+				collectionfactory.create("#A103factory")
+		elseif randomness == 4 then
+				collectionfactory.create("#A104factory")
+		end
+	
+	-- Slightly harder levels have two more options for obstacles
+	elseif levelID == 4 or levelID == 5 then
+		randomness = math.random(1, 6)
+	
+		if randomness == 1 then
+			collectionfactory.create("#A101factory")
+		elseif randomness == 2 then
+				collectionfactory.create("#A102factory")
+		elseif randomness == 3 then
+				collectionfactory.create("#A103factory")
+		elseif randomness == 4 then
+				collectionfactory.create("#A104factory")
+		elseif randomness == 5 then
+		 		collectionfactory.create("#A105factory")
+		elseif randomness == 6 then
+				collectionfactory.create("#A106factory")
+		end
+	
+	-- Medium difficulty obstacles
+	elseif levelID >=6 and levelID <=10 then 
+		randomness = math.random(1, 10)
+	
+		if randomness == 1 then
+			collectionfactory.create("#A201factory")
+		elseif randomness == 2 then
+				collectionfactory.create("#A202factory")
+		elseif randomness == 3 then
+				collectionfactory.create("#A203factory")
+		elseif randomness == 4 then
+				collectionfactory.create("#A204factory")
+		elseif randomness == 5 then
+				collectionfactory.create("#A205factory")
+		elseif randomness == 6 then
+				collectionfactory.create("#A206factory")
+		elseif randomness == 7 then
+				collectionfactory.create("#A207factory")
+		elseif randomness == 8 then
+				collectionfactory.create("#A208factory")
+		elseif randomness == 9 then
+				collectionfactory.create("#A209factory")
+		elseif randomness == 10 then
+				collectionfactory.create("#A210factory")
+		end
+	
+	-- The hardest obstacles
+	elseif levelID >=11 and levelID <=15 then
+
+		randomness = math.random(1, 8)
+	
+		if randomness == 1 then
+			collectionfactory.create("#A301factory")
+		elseif randomness == 2 then
+				collectionfactory.create("#A302factory")
+		elseif randomness == 3 then
+				collectionfactory.create("#A303factory")
+		elseif randomness == 4 then
+				collectionfactory.create("#A304factory")
+		elseif randomness == 5 then
+				collectionfactory.create("#A305factory")
+		elseif randomness == 6 then
+				collectionfactory.create("#A306factory")
+		elseif randomness == 7 then
+				collectionfactory.create("#A307factory")
+		elseif randomness == 8 then
+				collectionfactory.create("#A308factory")
+		end
+	end   
+	
+	-- One more A/obstacle piece has been spawned so add that to the total
+	A = A + 1
+end
+
+-- Creating a crossroads that requires you to remember the right symbol
+local function createB() 
+	
+	-- Two options
+	if levelID >= 1 and levelID <= 5 or levelID == 8 or levelID == 9 then
+		randomness = math.random(1, 2)
+		
+		if randomness == 1 then
+			collectionfactory.create("#B1factory")
+		elseif randomness == 2 then
+			collectionfactory.create("#B2factory")
+		end
+	
+	-- Three options
+	elseif levelID == 6 or levelID == 7 or levelID == 10 or levelID == 13 or levelID == 14 then
+		randomness = math.random(1, 3)
+		
+		if randomness == 1 then
+			collectionfactory.create("#B3factory")
+		elseif randomness == 2 then
+				collectionfactory.create("#B4factory")
+		elseif randomness == 3 then
+				collectionfactory.create("#B5factory")
+		end
+	
+	-- Four options
+	else	
+		randomness = math.random(1, 4)
+				
+		if randomness == 1 then
+				collectionfactory.create("#B6factory")
+		elseif randomness == 2 then
+				collectionfactory.create("#B7factory")
+		elseif randomness == 3 then
+				collectionfactory.create("#B8factory")
+		elseif randomness == 4 then
+				collectionfactory.create("#B9factory")
+		end
+	end
+	
+	-- One more B/crossroads piece has been spawned so add that to the total
+	B = B + 1
+end
+
+-- Creating the level's interval piece that contains the treasure
+local function createC()
+	
+	-- Use a piece that has 5 bubbles (late levels)
+	if levelID > 12 then
+		randomness = math.random(1, 3)
+		
+		if randomness == 1 then
+			collectionfactory.create("#C1Triplefactory")
+		elseif randomness == 2 then
+				collectionfactory.create("#C2Triplefactory")
+		elseif randomness == 3 then
+				collectionfactory.create("#C3Triplefactory")
+		end
+		
+	-- Use a piece that has 4 bubbles (mid-game levels)
+	elseif levelID > 7 then
+		randomness = math.random(1, 5)
+		
+		if randomness == 1 then
+			collectionfactory.create("#C1Doublefactory")
+		elseif randomness == 2 then
+				collectionfactory.create("#C2Doublefactory")
+		elseif randomness == 3 then
+				collectionfactory.create("#C3Doublefactory")
+		elseif randomness == 4 then
+				collectionfactory.create("#C4Doublefactory")
+		elseif randomness == 5 then
+				collectionfactory.create("#C5Doublefactory")
+		end
+	
+	-- Use a piece that has 3 bubbles (earlier levels)
+	else
+		randomness = math.random(1, 5)
+		
+		if randomness == 1 then
+			collectionfactory.create("#C1factory")
+		elseif randomness == 2 then
+				collectionfactory.create("#C2factory")
+		elseif randomness == 3 then
+				collectionfactory.create("#C3factory")
+		elseif randomness == 4 then
+				collectionfactory.create("#C4factory")
+		elseif randomness == 5 then
+				collectionfactory.create("#C5factory")
+		end
+	end
+	
+	-- One C/interval piece has been spawned so add that to the total
+	C = C + 1
+end
+
+-- Function for generating incorrect symbols
+local function getWrong() 
+	-- Generate symbols
+	for i = 0, wamount -1 do
+	wsymbols[i] = math.random(1, 9)
+	end
+
+	-- If the first symbol is the same as the current correct symbol, add one to it
+	if wsymbols[0] == symbols[index] then
+		wsymbols[0] = wsymbols[0] + 1
+			if wsymbols[0] > 9 then
+				wsymbols[0] = 1
+			end
+	end
+
+	-- While the second symbol is the same as the first one or the current correct symbol, add one to it
+	while wsymbols[1] == wsymbols[0] or wsymbols[1] == symbols[index] do
+		wsymbols[1] = wsymbols[1] + 1
+
+		if wsymbols[1] > 9 then
+			wsymbols[1] = 1
+		end
+	end
+
+	-- While the second symbol is the same as the first one, the second one or the current correct symbol, add one to it
+	while wsymbols[2] == wsymbols[0] or wsymbols[2] == wsymbols[1] or wsymbols[2] == symbols[index]  do
+		wsymbols[2] = wsymbols[2] + 1
+
+		if wsymbols[2] > 9 then
+			wsymbols[2] = 1
+		end	
+	end
+end
+
+
+-- Initialization
+function init(self)
+	levelID = 0
+	
+	-- Ask the controller to send the stage number
+	msg.post("controller:/controller", "get_stage_num")
+	
+	math.randomseed(os.time())
+	math.random(1, 9)
+	
+	-- Initiating the values used in level generation
+	A = 0
+	B = 0
+	C = 0
+
+	-- Declaring variables for the random values that represent wrong and correct symbols
+	-- Max number of correct symbols at any time is 5
+	amount = 5
+	-- Current correct symbol
+	index = 0
+	-- Array with the actual symbols
+	symbols = {}
+	
+	-- Max number of wrong symbols at any time is 3
+	wamount = 3
+	-- Current wrong symbol
+	windex = 0
+	-- Array with the actual symbols
+	wsymbols = {}
+
+	-- Generating the correct symbols
+	for i = 0, amount -1 do
+		symbols[i] = math.random(1, 9)
+	end
+
+	-- Use the same logic as in the wrong symbol generation process to make all symbols in this array unique
+	if symbols[1] == symbols[0] then
+		symbols[1] = symbols[1] + 1
+			if symbols[1] > 9 then
+				symbols[1] = 1
+			end		
+	end
+
+	while symbols[2] == symbols[0] or symbols[2] == symbols[1]  do
+		symbols[2] = symbols[2] + 1
+			if symbols[2] > 9 then
+				symbols[2] = 1
+			end	
+	end
+
+	while symbols[3] == symbols[0] or symbols[3] == symbols[1] or symbols[3] == symbols[2] do
+		symbols[3] = symbols[3] + 1		
+			if symbols[3] > 9 then
+				symbols[3] = 1
+			end	
+	end
+
+	while symbols[4] == symbols[0] or symbols[4] == symbols[1] or symbols[4] == symbols[2] or symbols[4] == symbols[3] do
+		symbols[4] = symbols[4] + 1
+			if symbols[4] > 9 then
+				symbols[4] = 1
+			end		
+	end
+
+	-- Generating the wrong symbols
+	getWrong()
+end
+
+-- Various communications with other pieces of the level
+function on_message(self, message_id, message, sender)
+
+	-- Receiving the response for the stage number asked for in init
+	if message_id == hash("set_stage_num") then
+		levelID = message.stage_num
+		
+		p = go.get_world_position()
+		p.x = 1650
+		hard_pos = p
+		hard_pos.x = 2700
+		
+		-- Generate the start collection with the right amount of start symbols depending on the level
+		-- Position of the start may change a bit depending on the level due to different movement speed and the amount of symbols
+		if levelID <= 7 then
+			collectionfactory.create("#StartNormfactory", p)
+			elseif levelID <= 12 then
+				collectionfactory.create("#StartMedfactory", p)
+			elseif levelID <= 15 then
+				collectionfactory.create("#StartHardfactory", hard_pos)
+		end	
+	end
+
+	-- Allows correct symbols to adjust their sprite correctly upon spawn
+	if message_id == hash("give_correct") then
+		msg.post(sender, "correct_symbol", {symbol = symbols[index]})
+	end
+
+	-- Allows wrong symbols to adjust their sprite correctly upon spawn
+	if message_id == hash("give_wrong") then
+		msg.post(sender, "wrong_symbol", {symbol = wsymbols[windex]})
+		windex = windex + 1
+	end
+
+	-- Moving up an index and getting new wrong symbols once a crossroads has been passed
+	if message_id == hash("symbol_passed") then
+		index = index + 1
+			if index < amount then
+				getWrong()
+				windex = 0
+			end
+	end
+
+	-- Allows the spawned start collection to display the right symbols at the start of the level
+	if message_id == hash("start_symbols") then
+		msg.post(sender, "symbols", {s1 = symbols[0], s2 = symbols[1], s3 = symbols[2], s4 = symbols[3], s5 = symbols[4]})
+	end
+
+	-- If the factory receives a message from the last spawned collection that there's room, it'll spawn the next collection
+	if message_id == hash("sendNext") then
+	
+		-- Level recipe for the levels with only 3 symbols (A-B-A-B-C-A-B)
+		if levelID >= 1 and levelID <=  7 then
+					
+				-- If the recipe has been completed, spawn the goal
+				if A == 3 and B == 3 and C == 1 then
+					collectionfactory.create("#Goalfactory")
+					
+				-- Spawn 1st obstacle segment
+				elseif A == 0 then
+					createA()
+					
+				-- Spawn 1st memory game segment
+				elseif A == 1 and B == 0 then
+					createB()
+					
+				-- Spawn 2nd obstacle segment
+				elseif B == 1 and A == 1 then
+					createA()
+					
+				-- Spawn 2nd memory game segment
+				elseif A == 2 and B == 1 then
+					createB()
+					
+				-- Spawn interval segment
+				elseif B == 2 and C == 0 then 
+					createC()
+					
+				-- Spawn 3rd obstacle segment
+				elseif C == 1 and A == 2 then
+					createA()
+					
+				-- Spawn 3nd memory game segment
+				elseif A == 3 and B == 2 then
+					createB()
+			end
+			
+		-- Level recipe for the levels with 4 symbols (A-B-A-B-C-A-B-A-B)
+		elseif levelID >= 8 and levelID <= 12 then	
+				
+				-- If the recipe has been completed, spawn the goal
+				if A == 4 and B == 4 and C == 1 then
+					collectionfactory.create("#Goalfactory")
+			
+				-- Spawn 1st obstacle segment
+				elseif A == 0 then
+					createA()
+				
+				-- Spawn 1st memory game segment
+				elseif A == 1 and B == 0 then
+					createB()
+					
+				-- Spawn 2nd obstacle segment
+				elseif B == 1 and A == 1 then
+					createA()
+					
+				-- Spawn 2nd memory game segment
+				elseif A == 2 and B == 1 then
+					createB()
+					
+				-- Spawn interval segment
+				elseif B == 2 and C == 0 then
+					createC()
+				
+				-- Spawn 3rd obstacle segment
+				elseif C == 1 and A == 2 then
+					createA()
+					
+				-- Spawn 3rd memory game segment
+				elseif A == 3 and B == 2 then
+					createB()
+					
+				-- Spawn 4th obstacle segment
+				elseif A == 3 and B == 3 then
+					createA()
+				
+				-- Spawn 4th memory game segment
+				elseif A == 4 and B == 3 then
+					createB()		
+			end
+			
+		-- Level recipe for the levels with 5 symbols (A-B-A-B-A-B-C-A-B-A-B)
+		elseif levelID >= 13 and levelID <= 15 then		
+		
+				-- If the recipe has been completed, spawn the goal
+				if A == 5 and B == 5 and C == 1 then
+					collectionfactory.create("#Goalfactory")
+				
+				-- Spawn 1st obstacle segment
+				elseif A == 0 then 
+					createA()
+				
+				-- Spawn 1st memory game segment
+				elseif A == 1 and B == 0 then
+					createB()
+				
+				-- Spawn 2nd obstacle segment
+				elseif B == 1 and A == 1 then
+					createA()
+					
+				-- Spawn 2nd memory game segment
+				elseif A == 2 and B == 1 then
+					createB()
+				
+				-- Spawn 3rd obstacle segment
+				elseif A == 2 and B == 2 then
+					createA()
+					
+				-- Spawn 3rd memory game segment
+				elseif A == 3 and B == 2 then
+					createB()
+					
+				-- Spawn interval segment
+				elseif B == 3 and C == 0 then
+					createC()
+					
+				-- Spawn 4th obstacle segment
+				elseif C == 1 and A == 3 then 
+					createA()
+				
+				-- Spawn 4th memory game segment
+				elseif A == 4 and B == 3 then
+					createB()
+					
+				-- Spawn 5th obstacle segment
+				elseif A == 4 and B == 4 then
+					createA()
+				
+				-- Spawn 5th memory game segment
+				elseif A == 5 and B == 4 then
+					createB()
+			end			
+		end
+	end
+end
+
+
+
+
+
